@@ -1,4 +1,5 @@
 package org.yearup.sandwichshop;
+
 import java.util.Scanner;
 
 public class UserInterface {
