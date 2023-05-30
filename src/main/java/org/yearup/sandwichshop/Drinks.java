@@ -1,6 +1,7 @@
 package org.yearup.sandwichshop;
 
 public class Drinks {
+
     private final DrinkSize size;
     private double price;
     private final DrinkType type;
@@ -32,4 +33,5 @@ public class Drinks {
             this.price = 3.00;
         }
     }
+
 }
