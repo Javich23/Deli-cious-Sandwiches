@@ -27,8 +27,6 @@ public class UserInterface {
             switch (option) {
                 case 1:
                     orderScreen();
-
-                    // Here we can add methods to customize the order (add sandwiches, drinks, chips, etc.)
                     break;
                 case 0:
                     exit = true;
@@ -39,8 +37,39 @@ public class UserInterface {
             }
         }
     }
-    private void orderScreen(){
 
+    private void orderScreen() {
+        init();
+
+        boolean exit = false;
+
+        while (!exit) {
+            String heading = """
+                                    
+                    ======= ORDER HERE ========
+                    1) Sandwich
+                    2) Drinks
+                    3) Chips
+                    0) Back to Home Screen
+                    """;
+
+            int choice = consoleInput.nextInt();
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Oops, that didn't work. Try again!");
+                    break;
+
+            }
+        }
     }
 }
 
