@@ -26,9 +26,8 @@ public class UserInterface {
             int option = consoleInput.nextInt();
             switch (option) {
                 case 1:
-                    // Create a new order
-                    Order order = new Order();
-                    orderManager.addOrder(order);
+                    orderScreen();
+
                     // Here we can add methods to customize the order (add sandwiches, drinks, chips, etc.)
                     break;
                 case 0:
@@ -39,6 +38,9 @@ public class UserInterface {
                     break;
             }
         }
+    }
+    private void orderScreen(){
+
     }
 }
 
