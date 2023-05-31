@@ -44,9 +44,4 @@ public enum Toppings {
     public double getPrice() {
         return price;
     }
-
-    public void setPrice(double price) {
-        if(To)
-        this.price = price;
-    }
 }

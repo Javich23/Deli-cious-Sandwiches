@@ -2,7 +2,7 @@ package org.yearup.sandwichshop;
 
 public class Main {
     public static void main(String[] args) {
-        UserInterface ui = new UserInterface();
-        ui.display();
+        HomeScreen hs = new HomeScreen();
+        hs.display();
     }
 }

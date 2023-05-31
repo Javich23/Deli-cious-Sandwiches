@@ -1,13 +1,14 @@
 package org.yearup.sandwichshop;
 
-public enum ChipType {BAKED(1.50), BBQ(1.50), JALAPENO(1.50), CHEDDAR(1.50), SEASALT(1.50);
-    private double price;
+public enum ChipType {BAKED("Baked"), BBQ("BBQ"), JALAPENO("Jalapeno"), CHEDDAR("Cheddar"), SEASALT("Seasalt");
 
-    ChipType(double price) {
-        this.price = price;
+    private String name;
+
+    ChipType(String name) {
+        this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getName() {
+        return name;
     }
 }

@@ -1,9 +1,19 @@
 package org.yearup.sandwichshop;
 
-public class Chip {
-    private double price = 1.50;
+public class Chip implements OrderItems{
+   private ChipType type;
 
-    public double getPrice(ChipType chipType) {
-        return price;
+    public Chip(ChipType type) {
+        this.type = type;
+    }
+
+    @Override
+    public double getPrice() {
+        return 1.50;
+    }
+
+    @Override
+    public String getDetails() {
+        return "Chip " + type.getName();
     }
 }
