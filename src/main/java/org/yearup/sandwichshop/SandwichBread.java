@@ -1,9 +1,9 @@
 package org.yearup.sandwichshop;
 
-public enum SandwichType {WHITE("White"), WHEAT("Wheat"), RYE("Rye"), WRAP("Wrap");
+public enum SandwichBread {WHITE("White"), WHEAT("Wheat"), RYE("Rye"), WRAP("Wrap");
     private final String name;
 
-    SandwichType(String name) {
+    SandwichBread(String name) {
         this.name = name;
     }
 

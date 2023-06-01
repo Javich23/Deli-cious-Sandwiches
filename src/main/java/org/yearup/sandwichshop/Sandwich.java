@@ -1,32 +1,35 @@
 package org.yearup.sandwichshop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sandwich implements OrderItems{
     private SandwichSize size;
-    private SandwichType type;
+    private SandwichBread type;
+    private static List<Topping> toppings;
+    private static  List<Sauce> sauces;
 
-    public Sandwich(SandwichSize size, SandwichType type) {
+        public Sandwich(SandwichSize size, SandwichBread type) {
         this.size = size;
         this.type = type;
+        this.toppings = new ArrayList<>();
+        this.sauces = new ArrayList<>();
     }
 
     public SandwichSize getSize() {
         return size;
     }
 
-    public SandwichType getType() {
+    public SandwichBread getType() {
         return type;
     }
 
-//    public void setPrice(double price) {
-//        if(size == SandwichSize.FOUR) {
-//            this.price = 5.50;
-//        } else if(size == SandwichSize.EIGHT) {
-//            this.price = 7.00;
-//        } else if(size == SandwichSize.TWELVE){
-//            this.price = 8.50;
-//        }
-//    }
-
+    public static void addTopping(Topping topping) {
+        toppings.add(topping);
+    }
+    public static void addSauce(Sauce sauce){
+        sauces.add(sauce);
+    }
     @Override
     public double getPrice() {
         return size.getPrice();
@@ -34,6 +37,10 @@ public class Sandwich implements OrderItems{
 
     @Override
     public String getDetails() {
-        return null;
+        return "SIZE: " + size.getInches() +"\n"
+                +"BREAD: " + type.getName() +"\n"
+                    +"Toppings: " + toppings + "\n";
+
+
     }
 }

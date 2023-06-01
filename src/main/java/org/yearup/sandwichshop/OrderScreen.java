@@ -1,13 +1,13 @@
 package org.yearup.sandwichshop;
 
-import java.util.EnumSet;
 import java.util.Scanner;
 
 public class OrderScreen {
     static Scanner consoleInput = new Scanner(System.in);
     private Order order;
+    public Topping topping;
 //    private Sandwich sandwich;
-    private Toppings toppings;
+
     public OrderScreen(Order order) {
         this.order = order;
     }
@@ -38,27 +38,93 @@ public class OrderScreen {
         }
     }
     private void addSandwich() {
-        for(SandwichType i : SandwichType.values()) {
-            System.out.printf("%s", i.getName()+ "\n");
-        }
+
+        System.out.println("""
+                [1] WHITE
+                [2] WHEAT
+                [3] RYE
+                [4] WRAP
+                """);
         System.out.print("Choose your bread: ");
-        String bread = consoleInput.next().toUpperCase();
-        SandwichType sandwichType = SandwichType.valueOf(bread);
-        for(SandwichSize s : SandwichSize.values()) {
-            System.out.printf("%s", s + " INCHES\n");
-        }
+        int bread = consoleInput.nextInt();
+        SandwichBread sandwichBread = SandwichBread.values()[bread - 1];
+        System.out.println("""
+                [1] 4"
+                [2] 8"
+                [3] 12"
+                """);
         System.out.print("Choose your size: ");
-        String size = consoleInput.next().toUpperCase();
-        SandwichSize sandwichSize = SandwichSize.valueOf(size);
-        Sandwich sandwich1 = new Sandwich(sandwichSize, sandwichType);
-        for(Toppings t : Toppings.values()) {
-            if(t.equals(ToppingType.MEAT)) {
-                System.out.printf("%s", t.getName()+ "\n");
+        int size = consoleInput.nextInt();
+        SandwichSize sandwichSize = SandwichSize.values()[size - 1];
+        Sandwich sandwich1 = new Sandwich(sandwichSize,sandwichBread);
+        System.out.println("""
+                [1] STEAK
+                [2] HAM
+                [3] SALAMI
+                [4] ROAST BEEF
+                [5] CHICKEN
+                [6] BACON
+                """);
+        System.out.print("CHOOSE A MEAT (ENTER NUMBER): ");
+        int meat = consoleInput.nextInt();
+        Topping meatTopping = Topping.values()[meat - 1];
+        Sandwich.addTopping(meatTopping);
+        System.out.println("""
+                [7] AMERICAN
+                [8] PROVOLONE
+                [9] CHEDDAR
+                [10] SWISS
+                """);
+        System.out.print("CHOOSE A CHEESE(ENTER NUMBER): ");
+        int cheese = consoleInput.nextInt();
+        Topping cheeseTopping = Topping.values()[cheese - 1];
+        Sandwich.addTopping(cheeseTopping);
+        boolean done = false;
+        while(!done) {
+            System.out.println("""
+                    [11] LETTUCE
+                    [12] PEPPER
+                    [13] ONION
+                    [14] TOMATOES
+                    [15] JALAPENOS
+                    [16] CUCUMBERS
+                    [17] PICKLES
+                    [18] GUACAMOLE
+                    [19] MUSHROOMS
+                    [0] DONE WITH TOPPINGS
+                    """);
+
+            System.out.print("CHOOSE TOPPING(S): ");
+            int topping = consoleInput.nextInt();
+            if(topping == 0) {
+                done = true;
+            } else {
+                Topping freeTopping = Topping.values()[topping - 1];
+                Sandwich.addTopping(freeTopping);
             }
         }
-        System.out.print("Choose your meat: ");
-        String topping = consoleInput.next();
+        boolean loop = false;
+        while(loop) {
+            System.out.println("""
+                    [1] MAYO
+                    [2] MUSTARD
+                    [3] KETCHUP
+                    [4] RANCH
+                    [5] THOUSAND ISLANDS
+                    [6] VINAIGRETTE
+                    [0] DONE WITH SAUCES
+                    """);
 
+            System.out.print("CHOOSE SAUCE(S): ");
+            int sauce = consoleInput.nextInt();
+            if(sauce == 0) {
+                loop = true;
+            } else {
+                Sauce sauces = Sauce.values()[sauce - 1];
+                Sandwich.addSauce(sauces);
+            }
+        }
+        order.addOrder(sandwich1);
     }
 
     private void addDrink() {
@@ -81,7 +147,7 @@ public class OrderScreen {
         DrinkType drinkType = DrinkType.values()[type - 1];
         Drink drink = new Drink(drinkSize, drinkType);
         order.addOrder(drink);
-        System.out.println("Added " + drinkSize + " " + drinkType);
+        System.out.println("\nAdded " + drinkSize + " " + drinkType);
 
     }
 
@@ -98,13 +164,15 @@ public class OrderScreen {
         ChipType chipType = ChipType.values()[type - 1];
         Chip chip = new Chip(chipType);
         order.addOrder(chip);
-        System.out.println("Added " + chipType + " CHIPS");
+        System.out.println("\nAdded " + chipType + " CHIPS");
     }
 
     private void checkout() {
-        System.out.println("Order Details: ");
-//        for(OrderItems item: order.ge)
-
+        System.out.println("========= YOUR ORDER =========");
+        for(OrderItems item: order.getItems()) {
+            System.out.println(item.getDetails());
+        }
+        System.out.printf("TOTAL PRICE: $%.2f\n", order.getTotalPrice());
 
     }
 }

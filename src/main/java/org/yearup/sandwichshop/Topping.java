@@ -1,6 +1,6 @@
 package org.yearup.sandwichshop;
 
-public enum Toppings implements OrderItems {
+public enum Topping implements OrderItems {
     //Meat Toppings
     STEAK("Steak", ToppingType.MEAT, 1.00),
     HAM("Ham", ToppingType.MEAT, 1.00),
@@ -28,7 +28,7 @@ public enum Toppings implements OrderItems {
     private double price;
     SandwichSize sandwichSize;
 
-    Toppings(String name, ToppingType type, double price) {
+    Topping(String name, ToppingType type, double price) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -45,10 +45,10 @@ public enum Toppings implements OrderItems {
 
     @Override
     public double getPrice() {
-        if (type == ToppingType.MEAT && sandwichSize.getInches().equals("8\"")) {
-            return 2.00;
-        } else if (type == ToppingType.CHEESE && sandwichSize.getInches().equals("12\"")) {
-            return 3.00;
+        if (type != ToppingType.REGULAR && sandwichSize.getInches().equals("8\"")) {
+            return price * 2;
+        } else if (type != ToppingType.REGULAR && sandwichSize.getInches().equals("12\"")) {
+            return price * 3;
         } else {
             return price;
         }

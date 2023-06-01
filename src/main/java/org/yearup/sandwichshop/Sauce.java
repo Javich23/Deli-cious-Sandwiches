@@ -1,9 +1,9 @@
 package org.yearup.sandwichshop;
 
-public enum Sauces implements OrderItems {MAYO("Mayo"), MUSTARD("Mustard"), KETCHUP("Ketchup"), RANCH("Ranch"), THOUSAND_ISLANDS("Thousand Islands"), VINAIGRETTE("Vinaigrette");
+public enum Sauce implements OrderItems {MAYO("Mayo"), MUSTARD("Mustard"), KETCHUP("Ketchup"), RANCH("Ranch"), THOUSAND_ISLANDS("Thousand Islands"), VINAIGRETTE("Vinaigrette");
     private String name;
 
-    Sauces(String name) {
+    Sauce(String name) {
         this.name = name;
     }
 
