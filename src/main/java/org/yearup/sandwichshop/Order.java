@@ -15,6 +15,10 @@ public class Order {
         items = new ArrayList<>();
     }
 
+    public List<OrderItems> getItems() {
+        return items;
+    }
+
     public void addOrder(OrderItems item) {
         this.items.add(item);
     }
