@@ -37,11 +37,10 @@ public class PlaySound {
 
                 // Wait for the sound to finish playing
                 line.drain();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
                 // Close the line
                 line.close();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
