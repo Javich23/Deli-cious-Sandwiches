@@ -14,6 +14,6 @@ public class Chip implements OrderItems{
 
     @Override
     public String getDetails() {
-        return "CHIP: " + type.getName().toUpperCase() + " " + " CHIPS";
+        return "Chips: " + type.getName();
     }
 }

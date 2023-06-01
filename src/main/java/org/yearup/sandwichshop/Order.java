@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    public List<OrderItems> getItems() {
+        return items;
+    }
+
     private List<OrderItems> items;
 
     public Order() {
         items = new ArrayList<>();
-    }
-
-    public List<OrderItems> getItems() {
-        return items;
     }
 
     public void addOrder(OrderItems item) {
