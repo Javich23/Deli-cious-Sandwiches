@@ -102,9 +102,11 @@ public class OrderScreen {
     }
 
     private void checkout() {
-        System.out.println("Order Details: ");
-//        for(OrderItems item: order.ge)
-
+        System.out.println("YOUR ORDER: ");
+       for(OrderItems item: order.getItems()) {
+           System.out.println(item.getDetails());
+       }
+        System.out.printf("Total price: $%.2f\n", order.getTotalPrice());
 
     }
 }

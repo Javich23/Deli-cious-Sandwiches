@@ -25,6 +25,6 @@ public class Drink implements OrderItems{
 
     @Override
     public String getDetails() {
-        return "Drink: "+ size.getName() + type.getName();
+        return "Drink: "+ size.getName() + " " + type.getName();
     }
 }
