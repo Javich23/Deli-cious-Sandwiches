@@ -1,11 +1,13 @@
 package org.yearup.sandwichshop;
 
+import java.util.EnumSet;
 import java.util.Scanner;
 
 public class OrderScreen {
     static Scanner consoleInput = new Scanner(System.in);
     private Order order;
-
+//    private Sandwich sandwich;
+    private Toppings toppings;
     public OrderScreen(Order order) {
         this.order = order;
     }
@@ -34,6 +36,29 @@ public class OrderScreen {
                 default-> System.out.println("Oops, that didn't work. Try again!");
             }
         }
+    }
+    private void addSandwich() {
+        for(SandwichType i : SandwichType.values()) {
+            System.out.printf("%s", i.getName()+ "\n");
+        }
+        System.out.print("Choose your bread: ");
+        String bread = consoleInput.next().toUpperCase();
+        SandwichType sandwichType = SandwichType.valueOf(bread);
+        for(SandwichSize s : SandwichSize.values()) {
+            System.out.printf("%s", s + " INCHES\n");
+        }
+        System.out.print("Choose your size: ");
+        String size = consoleInput.next().toUpperCase();
+        SandwichSize sandwichSize = SandwichSize.valueOf(size);
+        Sandwich sandwich1 = new Sandwich(sandwichSize, sandwichType);
+        for(Toppings t : Toppings.values()) {
+            if(t.equals(ToppingType.MEAT)) {
+                System.out.printf("%s", t.getName()+ "\n");
+            }
+        }
+        System.out.print("Choose your meat: ");
+        String topping = consoleInput.next();
+
     }
 
     private void addDrink() {
@@ -68,16 +93,14 @@ public class OrderScreen {
                 [4] CHEDDAR
                 [5] SEASALT
                 """);
+        System.out.print("Choose a chip: ");
         int type = consoleInput.nextInt();
         ChipType chipType = ChipType.values()[type - 1];
         Chip chip = new Chip(chipType);
         order.addOrder(chip);
-        System.out.print("Added " + chipType + " CHIPS");
+        System.out.println("Added " + chipType + " CHIPS");
     }
 
-    private void addSandwich() {
-
-    }
     private void checkout() {
         System.out.println("Order Details: ");
 //        for(OrderItems item: order.ge)
