@@ -172,7 +172,11 @@ public class OrderScreen {
         for(OrderItems item: order.getItems()) {
             System.out.println(item.getDetails());
         }
-        System.out.printf("TOTAL PRICE: $%.2f\n", order.getTotalPrice());
+        System.out.printf("Total price: $%.2f\n", order.getTotalPrice());
+
+        // Saving the order details to a receipt file
+        ReceiptFileManager receiptFileManager = new ReceiptFileManager(order);
+        receiptFileManager.saveToFile();
 
     }
 }
