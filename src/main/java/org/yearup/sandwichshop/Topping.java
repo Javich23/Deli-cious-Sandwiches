@@ -40,7 +40,19 @@ public enum Topping {
     public String getName() {
         return name;
     }
-
+//    public static double getExtraMeat(SandwichSize size) {
+//        double extraPrice = 0.0;
+//        if(true) {
+//            if(size == SandwichSize.FOUR) {
+//                extraPrice = 0.50;
+//            } else if(size == SandwichSize.EIGHT){
+//                extraPrice = 1.00;
+//            } else if(size == SandwichSize.TWELVE) {
+//                extraPrice = 1.50;
+//            }
+//        }
+//        return extraPrice;
+//    }
     public double getPrice(SandwichSize size) {
         double price = basePrice;
         if (size == SandwichSize.EIGHT) {
