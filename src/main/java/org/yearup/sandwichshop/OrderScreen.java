@@ -173,7 +173,16 @@ public class OrderScreen {
             System.out.println(item.getDetails());
         }
         System.out.printf("TOTAL PRICE: $%.2f\n", order.getTotalPrice());
-
+        System.out.print("CONFIRM ORDER (Y/N): ");
+        String choice = consoleInput.nextLine().toUpperCase();
+        if(choice.equalsIgnoreCase("Y")) {
+            String receipt = order.getReceipt();
+            ReceiptFileManager rFM = new ReceiptFileManager();
+            order.clear();
+        } else if(choice.equalsIgnoreCase("N")){
+            System.out.println("ORDER CANCELLED...");
+            orderScreen();
+        }
     }
 }
 
