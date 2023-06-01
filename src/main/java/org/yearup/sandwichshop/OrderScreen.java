@@ -6,7 +6,7 @@ public class OrderScreen {
     static Scanner consoleInput = new Scanner(System.in);
     private Order order;
     public Topping topping;
-//    private Sandwich sandwich;
+//    private ReceiptFileManager rFM;
 
     public OrderScreen(Order order) {
         this.order = order;
@@ -19,6 +19,7 @@ public class OrderScreen {
             System.out.println("""
                                     
                     ======= ORDER HERE ========
+                    
                     [1] ADD SANDWICH
                     [2] ADD DRINK
                     [3] ADD CHIP
@@ -104,7 +105,7 @@ public class OrderScreen {
             }
         }
         boolean loop = false;
-        while(loop) {
+        while(!loop) {
             System.out.println("""
                     [1] MAYO
                     [2] MUSTARD
@@ -117,6 +118,7 @@ public class OrderScreen {
 
             System.out.print("CHOOSE SAUCE(S): ");
             int sauce = consoleInput.nextInt();
+            consoleInput.nextLine();
             if(sauce == 0) {
                 loop = true;
             } else {
@@ -161,6 +163,7 @@ public class OrderScreen {
                 """);
         System.out.print("Choose a chip: ");
         int type = consoleInput.nextInt();
+        consoleInput.nextLine();
         ChipType chipType = ChipType.values()[type - 1];
         Chip chip = new Chip(chipType);
         order.addOrder(chip);
@@ -174,14 +177,14 @@ public class OrderScreen {
         }
         System.out.printf("TOTAL PRICE: $%.2f\n", order.getTotalPrice());
         System.out.print("CONFIRM ORDER (Y/N): ");
-        String choice = consoleInput.nextLine().toUpperCase();
+        String choice = consoleInput.next().toUpperCase();
         if(choice.equalsIgnoreCase("Y")) {
             String receipt = order.getReceipt();
-            ReceiptFileManager rFM = new ReceiptFileManager();
+            ReceiptFileManager receiptFileManager = new ReceiptFileManager(order);
+            receiptFileManager.saveToFile(receipt);
             order.clear();
         } else if(choice.equalsIgnoreCase("N")){
             System.out.println("ORDER CANCELLED...");
-            orderScreen();
         }
     }
 }

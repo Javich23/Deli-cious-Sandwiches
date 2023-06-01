@@ -13,8 +13,9 @@ public class HomeScreen {
 
                     ======  Sandwich Shop =====
                                        
-                    [1] New Order
-                    [0] Exit""");
+                    [1] NEW ORDER
+                    [0] EXIT
+                    """);
 
             System.out.print("Enter option: ");
             int option = consoleInput.nextInt();

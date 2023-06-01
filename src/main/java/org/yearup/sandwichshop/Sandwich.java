@@ -32,14 +32,19 @@ public class Sandwich implements OrderItems{
     }
     @Override
     public double getPrice() {
-        return size.getPrice();
+        double totalPrice = size.getPrice();
+        for(Topping topping: toppings) {
+            totalPrice += topping.getPrice(size);
+        }
+        return totalPrice;
     }
 
     @Override
     public String getDetails() {
         return "SIZE: " + size.getInches() +"\n"
                 +"BREAD: " + type.getName() +"\n"
-                    +"Toppings: " + toppings + "\n";
+                +"TOPPINGS: " + toppings + "\n"
+                + "SAUCES: " + sauces + "\n";
 
 
     }
