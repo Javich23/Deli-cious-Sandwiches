@@ -70,6 +70,12 @@ public class OrderScreen {
         int meat = consoleInput.nextInt();
         Topping meatTopping = Topping.values()[meat - 1];
         Sandwich.addTopping(meatTopping);
+        System.out.print("WOULD YOU LIKE EXTRA MEAT(Y/N): ");
+        String extraChoice = consoleInput.next().toUpperCase();
+        if(extraChoice.equalsIgnoreCase("y")) {
+            Extras choice = new Extras(ExtraChoice.EXTRA_MEAT, sandwichSize);
+            order.addOrder(choice);
+        }
         System.out.println("""
                 [7] AMERICAN
                 [8] PROVOLONE
@@ -80,6 +86,12 @@ public class OrderScreen {
         int cheese = consoleInput.nextInt();
         Topping cheeseTopping = Topping.values()[cheese - 1];
         Sandwich.addTopping(cheeseTopping);
+        System.out.print("WOULD YOU LIKE EXTRA CHEESE(Y/N): ");
+        String extraCheese = consoleInput.next().toUpperCase();
+        if(extraCheese.equalsIgnoreCase("y")) {
+            Extras choice = new Extras(ExtraChoice.EXTRA_CHEESE, sandwichSize);
+            order.addOrder(choice);
+        }
         boolean done = false;
         while(!done) {
             System.out.println("""
