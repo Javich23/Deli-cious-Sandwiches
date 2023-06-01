@@ -102,7 +102,7 @@ public class OrderScreen {
     }
 
     private void checkout() {
-        System.out.println("YOUR ORDER: ");
+        System.out.println("========= YOUR ORDER =========");
        for(OrderItems item: order.getItems()) {
            System.out.println(item.getDetails());
        }
