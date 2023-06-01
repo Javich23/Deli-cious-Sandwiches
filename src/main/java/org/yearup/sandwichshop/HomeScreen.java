@@ -26,8 +26,12 @@ public class HomeScreen {
                     orderScreen.orderScreen();
                 }
 
-                case 0 -> exit = true;
-
+                case 0 -> {
+                    System.out.println("Goodbye!");
+                    PlaySound playSound = new PlaySound("./Sound/bell-ringing-04.wav");
+                    playSound.playSound();
+                    exit = true;
+                }
                 default->
                         System.out.println("Invalid option, please try again.");
 
