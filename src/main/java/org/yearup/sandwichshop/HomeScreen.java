@@ -17,7 +17,7 @@ public class HomeScreen {
                     [0] EXIT
                     """);
 
-            System.out.print("Enter option: ");
+            System.out.print("ENTER OPTION: ");
             int option = consoleInput.nextInt();
             consoleInput.nextLine();
             switch (option) {
@@ -28,7 +28,7 @@ public class HomeScreen {
                 }
 
                 case 0 -> {
-                    System.out.println("\nGoodbye!");
+                    System.out.println("\nGOODBYE!");
                     PlaySound playSound = new PlaySound("./Sound/bell-ringing-04.wav");
                     playSound.playSound();
                     exit = true;
@@ -39,5 +39,4 @@ public class HomeScreen {
             }
         }
     }
-
 }

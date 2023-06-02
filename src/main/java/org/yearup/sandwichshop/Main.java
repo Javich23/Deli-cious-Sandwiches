@@ -2,7 +2,7 @@ package org.yearup.sandwichshop;
 
 public class Main {
     public static void main(String[] args) {
-        PlaySound playSound = new PlaySound("./Sound/small_bell.wav");
+        PlaySound playSound = new PlaySound("./Sound/bell-ringing-04.wav");
         playSound.playSound();
         String header =
                 "  __        __   _                            \n" +

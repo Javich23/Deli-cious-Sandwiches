@@ -14,7 +14,7 @@ public class PlaySound {
         public PlaySound(String fileName) {
             try {
                 // Load WAV file into byte array
-                file = new File("./Sound/small_bell.wav");
+                file = new File("./Sound/bell-ringing-04.wav");
                 audio = AudioSystem.getAudioInputStream(file);
                 buffer = new byte[(int) audio.getFrameLength() * audio.getFormat().getFrameSize()];
                 audio.read(buffer);

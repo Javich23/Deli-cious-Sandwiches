@@ -25,7 +25,7 @@ public class OrderScreen {
                     [4] CHECKOUT
                     [0] CANCEL ORDER
                     """);
-            System.out.print("Choose an option: ");
+            System.out.print("CHOOSE AN OPTION: ");
             int choice = consoleInput.nextInt();
             switch (choice) {
                 case 1-> addSandwich();
@@ -33,7 +33,7 @@ public class OrderScreen {
                 case 3-> addChip();
                 case 4-> checkout();
                 case 0-> {
-                    System.out.println("\nCancelling order...");
+                    System.out.println("\nCANCELLING ORDER...");
                     exit = true;
                 }
                 default-> System.out.println("Oops, that didn't work. Try again!");
@@ -49,7 +49,7 @@ public class OrderScreen {
                 [3] RYE
                 [4] WRAP
                 """);
-        System.out.print("Choose your bread: ");
+        System.out.print("CHOOSE A BREAD: ");
         int bread = consoleInput.nextInt();
         SandwichBread sandwichBread = SandwichBread.values()[bread - 1];
         System.out.println("""
@@ -58,7 +58,7 @@ public class OrderScreen {
                 [2] 8"
                 [3] 12"
                 """);
-        System.out.print("Choose your size: ");
+        System.out.print("CHOOSE A SIZE: ");
         int size = consoleInput.nextInt();
         SandwichSize sandwichSize = SandwichSize.values()[size - 1];
         Sandwich sandwich1 = new Sandwich(sandwichSize,sandwichBread);
