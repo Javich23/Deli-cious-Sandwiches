@@ -40,4 +40,4 @@ This is an example of the printed receipt. The name is the date, as well as time
 
 ## Acknowledgements
 This program was built in a group effort. Contributors are Carlos Arteaga, Javier Chavez and Anne Koehler. 
-We also want to thank Mohammed Ahmed and Paul Kimball for their help in finishing the project. 
+We also want to thank Mohammed Ahmed and Paul Kimball for their help in finishing this project. 
