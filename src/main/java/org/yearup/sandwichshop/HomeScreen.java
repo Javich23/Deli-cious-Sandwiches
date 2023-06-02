@@ -28,7 +28,7 @@ public class HomeScreen {
                 }
 
                 case 0 -> {
-                    System.out.println("Goodbye!");
+                    System.out.println("\nGoodbye!");
                     PlaySound playSound = new PlaySound("./Sound/bell-ringing-04.wav");
                     playSound.playSound();
                     exit = true;

@@ -8,12 +8,14 @@ public class Sandwich implements OrderItems{
     private SandwichBread type;
     private static List<Topping> toppings;
     private static  List<Sauce> sauces;
+    private boolean toasted;
 
-        public Sandwich(SandwichSize size, SandwichBread type) {
+    public Sandwich(SandwichSize size, SandwichBread type) {
         this.size = size;
         this.type = type;
-        this.toppings = new ArrayList<>();
-        this.sauces = new ArrayList<>();
+        toppings = new ArrayList<>();
+        sauces = new ArrayList<>();
+        this.toasted = false;
     }
 
     public SandwichSize getSize() {
@@ -44,8 +46,14 @@ public class Sandwich implements OrderItems{
         return "SIZE: " + size.getInches() +"\n"
                 +"BREAD: " + type.getName() +"\n"
                 +"TOPPINGS: " + toppings + "\n"
-                + "SAUCES: " + sauces + "\n";
+                +"SAUCES: " + sauces + "\n"
+                +"TOASTED: " + (toasted ? "YES" : "NO");
 
 
+
+    }
+
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
     }
 }

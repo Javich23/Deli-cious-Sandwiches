@@ -10,7 +10,6 @@ public enum Sauce implements OrderItems {MAYO("Mayo"), MUSTARD("Mustard"), KETCH
     public String getName() {
         return name;
     }
-
     @Override
     public double getPrice() {
         return 0.00;
@@ -18,6 +17,6 @@ public enum Sauce implements OrderItems {MAYO("Mayo"), MUSTARD("Mustard"), KETCH
 
     @Override
     public String getDetails() {
-        return "Sauce: " + getName();
+        return "SAUCE: " + getName();
     }
 }

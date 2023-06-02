@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class OrderScreen {
     static Scanner consoleInput = new Scanner(System.in);
     private Order order;
-    public Topping topping;
-//    private ReceiptFileManager rFM;
+    private Topping topping;
 
     public OrderScreen(Order order) {
         this.order = order;
@@ -33,7 +32,10 @@ public class OrderScreen {
                 case 2-> addDrink();
                 case 3-> addChip();
                 case 4-> checkout();
-                case 0-> exit = true;
+                case 0-> {
+                    System.out.println("\nCancelling order...");
+                    exit = true;
+                }
                 default-> System.out.println("Oops, that didn't work. Try again!");
             }
         }
@@ -41,6 +43,7 @@ public class OrderScreen {
     private void addSandwich() {
 
         System.out.println("""
+                
                 [1] WHITE
                 [2] WHEAT
                 [3] RYE
@@ -50,6 +53,7 @@ public class OrderScreen {
         int bread = consoleInput.nextInt();
         SandwichBread sandwichBread = SandwichBread.values()[bread - 1];
         System.out.println("""
+                
                 [1] 4"
                 [2] 8"
                 [3] 12"
@@ -59,17 +63,23 @@ public class OrderScreen {
         SandwichSize sandwichSize = SandwichSize.values()[size - 1];
         Sandwich sandwich1 = new Sandwich(sandwichSize,sandwichBread);
         System.out.println("""
+                
                 [1] STEAK
                 [2] HAM
                 [3] SALAMI
                 [4] ROAST BEEF
                 [5] CHICKEN
                 [6] BACON
+                [0] NO MEAT
                 """);
         System.out.print("CHOOSE A MEAT (ENTER NUMBER): ");
         int meat = consoleInput.nextInt();
-        Topping meatTopping = Topping.values()[meat - 1];
-        Sandwich.addTopping(meatTopping);
+        if(meat > 0) {
+            Topping meatTopping = Topping.values()[meat - 1];
+            Sandwich.addTopping(meatTopping);
+        } else if(meat == 0){
+            System.out.println("NO MEAT");
+        }
         System.out.print("WOULD YOU LIKE EXTRA MEAT(Y/N): ");
         String extraChoice = consoleInput.next().toUpperCase();
         if(extraChoice.equalsIgnoreCase("y")) {
@@ -77,6 +87,7 @@ public class OrderScreen {
             order.addOrder(choice);
         }
         System.out.println("""
+                
                 [7] AMERICAN
                 [8] PROVOLONE
                 [9] CHEDDAR
@@ -92,9 +103,15 @@ public class OrderScreen {
             Extras choice = new Extras(ExtraChoice.EXTRA_CHEESE, sandwichSize);
             order.addOrder(choice);
         }
+        System.out.print("WOULD YOU LIKE IT TOASTED?(Y/N): ");
+        boolean choice = Boolean.parseBoolean(consoleInput.next());
+        if(choice) {
+            sandwich1.setToasted(true);
+        }
         boolean done = false;
         while(!done) {
             System.out.println("""
+                    
                     [11] LETTUCE
                     [12] PEPPER
                     [13] ONION
@@ -119,12 +136,14 @@ public class OrderScreen {
         boolean loop = false;
         while(!loop) {
             System.out.println("""
+                    
                     [1] MAYO
                     [2] MUSTARD
                     [3] KETCHUP
                     [4] RANCH
                     [5] THOUSAND ISLANDS
                     [6] VINAIGRETTE
+                    [7] NO SAUCE
                     [0] DONE WITH SAUCES
                     """);
 
@@ -132,10 +151,14 @@ public class OrderScreen {
             int sauce = consoleInput.nextInt();
             consoleInput.nextLine();
             if(sauce == 0) {
+              loop = true;
+            } else if(sauce == 7){
+                System.out.println("\nNO SAUCE");
                 loop = true;
             } else {
                 Sauce sauces = Sauce.values()[sauce - 1];
                 Sandwich.addSauce(sauces);
+                loop = true;
             }
         }
         order.addOrder(sandwich1);
@@ -196,7 +219,7 @@ public class OrderScreen {
             receiptFileManager.saveToFile(receipt);
             order.clear();
         } else if(choice.equalsIgnoreCase("N")){
-            System.out.println("ORDER CANCELLED...");
+            System.out.println("\nORDER CANCELLED");
         }
     }
 }

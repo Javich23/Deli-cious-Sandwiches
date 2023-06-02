@@ -2,10 +2,8 @@ package org.yearup.sandwichshop;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.SourceDataLine;
 import java.io.File;
-import java.io.IOException;
 
 public class PlaySound {
     private File file;
@@ -16,7 +14,7 @@ public class PlaySound {
         public PlaySound(String fileName) {
             try {
                 // Load WAV file into byte array
-                file = new File("./Sound/bell-ringing-04.wav");
+                file = new File("./Sound/small_bell.wav");
                 audio = AudioSystem.getAudioInputStream(file);
                 buffer = new byte[(int) audio.getFrameLength() * audio.getFormat().getFrameSize()];
                 audio.read(buffer);
