@@ -26,7 +26,7 @@ and confirm the order before doing so, or cancel the order and go back to the ma
 Here is an example of the order screen when the user orders a sandwich. 
 The options are chosen by number input. 
 
-<img width="260" alt="Screenshot 2023-06-02 at 10 28 13 AM" src="https://github.com/Javich23/SandwichShop/assets/130683435/dcebfaf5-ae29-4c32-a6b2-017022119216">
+![image](https://github.com/Javich23/SandwichShop/assets/129972695/3634eacb-2a6a-4200-a6f7-7348224b9d86)
 
 ## Checkout Screen
 The checkout screen gives an overview of everthing the user ordered. Then it can be confirmed and ordered, or denied and canceled. 
