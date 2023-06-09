@@ -1,0 +1,173 @@
+@startuml
+class org.yearup.sandwichshop.PlaySound {
+- File file
+- AudioInputStream audio
+- byte[] buffer
+- SourceDataLine line
++ void playSound()
+}
+enum org.yearup.sandwichshop.DrinkSize {
++  SMALL
++  MEDIUM
++  LARGE
+- String name
+- double price
++ String getName()
++ double getPrice()
+}
+enum org.yearup.sandwichshop.Sauce {
++  MAYO
++  MUSTARD
++  KETCHUP
++  RANCH
++  THOUSAND_ISLANDS
++  VINAIGRETTE
+- String name
++ String getName()
++ double getPrice()
++ String getDetails()
+}
+enum org.yearup.sandwichshop.SandwichSize {
++  FOUR
++  EIGHT
++  TWELVE
+- String inches
+- double price
++ String getInches()
++ double getPrice()
+}
+class org.yearup.sandwichshop.HomeScreen {
+~ {static} Scanner consoleInput
++ void display()
+}
+class org.yearup.sandwichshop.Extras {
+- ExtraChoice choice
+- SandwichSize size
++ double getPrice()
++ String getDetails()
+}
+enum org.yearup.sandwichshop.Topping {
++  STEAK
++  HAM
++  SALAMI
++  ROAST_BEEF
++  CHICKEN
++  BACON
++  AMERICAN
++  PROVOLONE
++  CHEDDAR
++  SWISS
++  LETTUCE
++  PEPPER
++  ONIONS
++  TOMATOES
++  JALAPENOS
++  CUCUMBERS
++  PICKLES
++  GUACAMOLE
++  MUSHROOMS
+- String name
+- ToppingType type
+- double basePrice
++ ToppingType getType()
++ String getName()
++ double getPrice(SandwichSize)
+}
+enum org.yearup.sandwichshop.SandwichBread {
++  WHITE
++  WHEAT
++  RYE
++  WRAP
+- String name
++ String getName()
+}
+class org.yearup.sandwichshop.Main {
++ {static} void main(String[])
+}
+enum org.yearup.sandwichshop.DrinkType {
++  COKE
++  SPRITE
++  TEA
++  JUICE
+- String name
++ String getName()
+}
+enum org.yearup.sandwichshop.ChipType {
++  BAKED
++  BBQ
++  JALAPENO
++  CHEDDAR
++  SEASALT
+- String name
++ String getName()
+}
+class org.yearup.sandwichshop.Sandwich {
+- SandwichSize size
+- SandwichBread type
+- {static} List<Topping> toppings
+- {static} List<Sauce> sauces
+- boolean toasted
++ SandwichSize getSize()
++ SandwichBread getType()
++ {static} void addTopping(Topping)
++ {static} void addSauce(Sauce)
++ double getPrice()
++ String getDetails()
++ void setToasted(boolean)
+}
+class org.yearup.sandwichshop.Drink {
+- DrinkSize size
+- DrinkType type
++ DrinkSize getSize()
++ DrinkType getType()
++ double getPrice()
++ String getDetails()
+}
+enum org.yearup.sandwichshop.ExtraChoice {
++  EXTRA_CHEESE
++  EXTRA_MEAT
+}
+class org.yearup.sandwichshop.ReceiptFileManager {
+- Order order
++ void saveToFile(String)
+}
+interface org.yearup.sandwichshop.OrderItems {
+~ double getPrice()
+~ String getDetails()
+}
+class org.yearup.sandwichshop.Order {
+- List<OrderItems> items
++ List<OrderItems> getItems()
++ void addOrder(OrderItems)
++ void removeOrder(OrderItems)
++ double getTotalPrice()
++ String getReceipt()
++ void clear()
+}
+enum org.yearup.sandwichshop.ToppingType {
++  MEAT
++  CHEESE
++  REGULAR
+}
+class org.yearup.sandwichshop.Chip {
+- ChipType type
++ double getPrice()
++ String getDetails()
+}
+class org.yearup.sandwichshop.OrderScreen {
+~ {static} Scanner consoleInput
+- Order order
+- Topping topping
++ void orderScreen()
+- void addSandwich()
+- void addDrink()
+- void addChip()
+- void checkout()
+}
+
+
+org.yearup.sandwichshop.OrderItems <|.. org.yearup.sandwichshop.Extras
+org.yearup.sandwichshop.OrderItems <|.. org.yearup.sandwichshop.Sandwich
+org.yearup.sandwichshop.OrderItems <|.. org.yearup.sandwichshop.Drink
+org.yearup.sandwichshop.OrderItems <|.. org.yearup.sandwichshop.Chip
+@enduml
